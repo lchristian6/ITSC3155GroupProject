@@ -3,7 +3,6 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-
 class CustomerBase(BaseModel):
     customer_name: str
     email: str

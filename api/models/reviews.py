@@ -4,13 +4,11 @@ from datetime import datetime
 from ..dependencies.database import Base
 
 
-class Customer(Base):
-    __tablename__ = "customers"
+class Review(Base):
+    __tablename__ = "reviews"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    customer_name = Column(String(100))
-    email = Column(String(100))
-    phone_number = Column(String(100))
-    address = Column(String(100))
+    review = Column(String(100))
+    score = Column(Integer())
 
-    customers = relationship("Customer", back_populates="customer")
+    reviews = relationship("Review", back_populates="review")
