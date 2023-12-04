@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
-from ..models import resourceManagement as model  # Replace 'resource_management_model' with your actual model name
+from ..models import models as model  # Replace 'resource_management_model' with your actual model name
 from sqlalchemy.exc import SQLAlchemyError
 
 
