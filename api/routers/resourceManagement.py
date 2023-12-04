@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from ..controllers import resourceManagement as controller  # Replace 'resource_management_controller' with your actual controller name
 from ..schemas import resourceManagement as schema  # Replace 'resource_management_schema' with your actual schema name
 from ..dependencies.database import get_db
+from typing import List
+
 
 router = APIRouter(
     tags=['Resource Management'],
@@ -15,7 +17,7 @@ def create_resource_management(item: schema.ResourceManagementCreate, db: Sessio
     return controller.create_resource_management(db=db, item=item)
 
 
-@router.get("/", response_model=list[schema.ResourceManagement])
+@router.get("/", response_model=List[schema.ResourceManagement])
 def read_resource_management(db: Session = Depends(get_db)):
     return controller.read_resource_management(db=db)
 

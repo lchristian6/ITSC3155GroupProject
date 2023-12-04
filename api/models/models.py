@@ -13,7 +13,7 @@ class Customer(Base):
     phone_number = Column(String(100))
     address = Column(String(100))
 
-    orders = relationship("Order", back_populates="customer")
+    orders = relationship("Order", back_populates="Customer")
 
 
 class OrderDetail(Base):
@@ -24,8 +24,7 @@ class OrderDetail(Base):
     dishes_id = Column(Integer, ForeignKey("dishes.id"))
     amount = Column(Integer, index=True, nullable=False)
 
-    # sandwich = relationship("Sandwich", back_populates="order_details")
-    order = relationship("Order", back_populates="order_details")
+    order = relationship("Order", back_populates="Order_details")
 
 
 class Order(Base):
@@ -36,8 +35,8 @@ class Order(Base):
     order_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
     description = Column(String(300))
 
-    order_details = relationship("OrderDetail", back_populates="order")
-    customers = relationship("Customer", back_populates="order")
+    order_details = relationship("OrderDetail", back_populates="Order")
+    customers = relationship("Customer", back_populates="Order")
 
 
 class Payment(Base):
@@ -48,7 +47,7 @@ class Payment(Base):
     transaction_status = Column(String(100))
     payment_type = Column(String(100))
 
-    payments = relationship("Payment", back_populates="payment")
+    payments = relationship("Payment", back_populates="Payment")
 
 
 class Pizza(Base):
@@ -61,7 +60,7 @@ class Pizza(Base):
     calories = Column(Integer)
     food_category = Column(String(100))
 
-    resources = relationship("Resources", back_populates="pizzas")
+    resources = relationship("Resources", back_populates="Pizzas")
 
 
 class Promotion(Base):
