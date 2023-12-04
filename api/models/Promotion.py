@@ -5,6 +5,6 @@ class Promotion(Base):
     __tablename__ = "promotions"
 
     id = Column(Integer, primary_key=True, index=True)
-    category = Column(String, index=True)
-    promotion_code = Column(String, unique=True, index=True)
+    category = Column(String(100), index=True)
+    promotion_code = Column(String(100), unique=True, index=True)
     expiration_date = Column(Date)

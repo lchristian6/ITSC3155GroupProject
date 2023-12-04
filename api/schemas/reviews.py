@@ -4,8 +4,8 @@ from pydantic import BaseModel
 
 
 class ReviewBase(BaseModel):
-    review_text = str
-    score = int
+    review_text: str
+    score: int
 
 
 class ReviewCreate(ReviewBase):
