@@ -3,7 +3,6 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-
 class PaymentBase(BaseModel):
     card_information: str
     transaction_status: str
