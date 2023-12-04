@@ -10,6 +10,9 @@ class Pizza(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     pizza_name = Column(String(100))
     price = Column(Integer)
+    ingredients = Column(String(100))
+    calories = Column(Integer)
+    food_category = Column(String(100))
 
     #order_details = relationship("OrderDetail", back_populates="order")
     #customers = relationship("Customer", back_populates="orders")

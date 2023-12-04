@@ -7,7 +7,10 @@ from sqlalchemy.exc import SQLAlchemyError
 def create(db: Session, request):
     new_item = model.Pizza(
         pizza_name=request.pizza_name,
-        price=request.price
+        price=request.price,
+        ingredients=request.ingredients,
+        calories=request.calories,
+        food_category=request.food_category
     )
 
     try:

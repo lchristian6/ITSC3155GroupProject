@@ -8,6 +8,9 @@ from .order_details import OrderDetail
 class PizzaBase(BaseModel):
     pizza_name: str
     price: int
+    ingredients: str
+    calories: int
+    food_category: str
 
 
 class PizzaCreate(PizzaBase):
@@ -17,6 +20,9 @@ class PizzaCreate(PizzaBase):
 class PizzaUpdate(BaseModel):
     pizza_name: Optional[str] = None
     price: Optional[int] = None
+    ingredients: Optional[str] = None
+    calories: Optional[int] = None
+    food_category: Optional[str] = None
 
 
 class Pizza(PizzaBase):
