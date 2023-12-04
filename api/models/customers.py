@@ -13,4 +13,4 @@ class Customer(Base):
     phone_number = Column(String(100))
     address = Column(String(100))
 
-    customers = relationship("Customer", back_populates="customer")
+    #orders = relationship("Order", back_populates="customer")

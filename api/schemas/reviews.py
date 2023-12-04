@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class ReviewBase(BaseModel):
-    review_text: str
+    review: str
     score: int
 
 
@@ -13,7 +13,7 @@ class ReviewCreate(ReviewBase):
 
 
 class ReviewUpdate(BaseModel):
-    review_text: Optional[str] = None
+    review: Optional[str] = None
     score: Optional[int] = None
 
 

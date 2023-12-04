@@ -15,4 +15,4 @@ class MenuItem(Base):
     food_category = Column(String(100))
 
     # Define relationship with Recipe (assuming it's already defined)
-    recipes = relationship("Recipe", back_populates="menu_item")
+    # recipes = relationship("Recipe", back_populates="menu_item")

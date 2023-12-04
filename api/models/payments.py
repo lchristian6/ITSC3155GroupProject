@@ -12,4 +12,4 @@ class Payment(Base):
     transaction_status = Column(String(100))
     payment_type = Column(String(100))
 
-    payments = relationship("Payment", back_populates="payments")
+    #payments = relationship("Payment", back_populates="payments")

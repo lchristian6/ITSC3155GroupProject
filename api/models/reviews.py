@@ -11,4 +11,4 @@ class Review(Base):
     review = Column(String(100))
     score = Column(Integer())
 
-    reviews = relationship("Review", back_populates="review")
+    #reviews = relationship("Review", back_populates="review")
