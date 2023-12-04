@@ -14,5 +14,6 @@ class Pizza(Base):
     calories = Column(Integer)
     food_category = Column(String(100))
 
+    resources = relationship("Resources", back_populates="pizzas")
     #order_details = relationship("OrderDetail", back_populates="order")
     #customers = relationship("Customer", back_populates="orders")
