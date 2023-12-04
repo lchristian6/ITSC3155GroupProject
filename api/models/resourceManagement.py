@@ -7,4 +7,3 @@ class ResourceManagement(Base):
     id = Column(Integer, primary_key=True, index=True)
     ingredient_name = Column(String(100), index=True)
     amount = Column(Float)
-    unit = Column(String(100))

@@ -8,7 +8,6 @@ def create_resource_management(db: Session, item):
     new_item = model.ResourceManagement(
         ingredient_name=item.ingredient_name,
         amount=item.amount,
-        unit=item.unit
     )
 
     try:
