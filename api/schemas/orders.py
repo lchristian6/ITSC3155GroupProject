@@ -16,12 +16,14 @@ class OrderCreate(OrderBase):
 class OrderUpdate(BaseModel):
     customer_name: Optional[str] = None
     description: Optional[str] = None
+    promo_code: Optional[str] = None
 
 
 class Order(OrderBase):
     id: int
     order_date: Optional[datetime] = None
     order_details: List[OrderDetail] = None
+    promo_code: Optional[str] = None
 
     class ConfigDict:
         from_attributes = True

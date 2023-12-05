@@ -7,7 +7,8 @@ from sqlalchemy.exc import SQLAlchemyError
 def create(db: Session, request):
     new_item = model.Order(
         customer_name=request.customer_name,
-        description=request.description
+        description=request.description,
+        promo_code=request.promo_code if hasattr(request, 'promo_code') else None
     )
 
     try:
