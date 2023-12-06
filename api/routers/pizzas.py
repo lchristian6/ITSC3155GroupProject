@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from ..controllers import pizzas as controller
 from ..schemas import pizzas as schema
 from ..dependencies.database import engine, get_db
+from sqlalchemy.orm import Session
+from typing import Optional,List
 
 router = APIRouter(
     tags=['Pizzas'],
@@ -33,3 +35,8 @@ def update(pizza_id: int, request: schema.PizzaUpdate, db: Session = Depends(get
 @router.delete("/{pizza_id}")
 def delete(pizza_id: int, db: Session = Depends(get_db)):
     return controller.delete(db=db, pizza_id=pizza_id)
+
+@router.get("/filter", response_model=List[schema.Pizza])
+def filter_pizzas_route(food_category: Optional[str] = None, db: Session = Depends(get_db)):
+    return controller.filter_pizzas(db, food_category)
+

@@ -69,3 +69,9 @@ def delete(db: Session, pizza_id):
         error = str(e.__dict__['orig'])
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+def filter_pizzas(db: Session, food_category: str = None):
+    query = db.query(model.Pizza)
+    if food_category:
+        query = query.filter(model.Pizza.food_category == food_category)
+    return query.all()

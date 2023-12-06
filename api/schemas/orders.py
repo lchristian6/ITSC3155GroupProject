@@ -13,7 +13,7 @@ class OrderBase(BaseModel):
 
 
 class OrderCreate(OrderBase):
-    pass
+    dish_id: int
 
 
 class OrderUpdate(BaseModel):

@@ -2,6 +2,11 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
 from ..models import orders as model
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import func
+from datetime import datetime
+from ..models.order_details import OrderDetail
+from ..models.dishes import Dish
+from ..models.orders import Order
 
 
 def create(db: Session, request):
@@ -68,3 +73,17 @@ def delete(db: Session, item_id):
         error = str(e.__dict__['orig'])
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+def calculate_revenue(db: Session, date: datetime.date):
+    result = db.query(
+        func.sum(OrderDetail.amount * Dish.price)
+    ).join(OrderDetail.order).join(OrderDetail.dish).filter(
+        Order.order_date == date
+    ).scalar()
+    return result if result is not None else 0
+
+def read_by_date_range(db: Session, start_date: datetime.date, end_date: datetime.date):
+    return db.query(model.Order).filter(
+        model.Order.order_date >= start_date,
+        model.Order.order_date <= end_date
+    ).all()

@@ -6,6 +6,7 @@ from pydantic import BaseModel
 class DishBase(BaseModel):
     dish_name: str
     price: float
+    dish_type: str
 
 
 class DishCreate(DishBase):
