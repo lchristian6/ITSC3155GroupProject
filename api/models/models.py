@@ -13,7 +13,7 @@ class Customer(Base):
     phone_number = Column(String(100))
     address = Column(String(100))
 
-    orders = relationship("Order", back_populates="Customer")
+    orders = relationship("Order", back_populates="customer")
 
 
 class OrderDetail(Base):
@@ -24,20 +24,21 @@ class OrderDetail(Base):
     dishes_id = Column(Integer, ForeignKey("dishes.id"))
     amount = Column(Integer, index=True, nullable=False)
 
-    order = relationship("Order", back_populates="Order_details")
+    order = relationship("Order", back_populates="order_details")
 
 
 class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    customer_id = Column(Integer, ForeignKey("customers.id"))  # Define foreign key
     customer_name = Column(String(100))
     order_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
     description = Column(String(300))
     promo_code = Column(String(50), nullable=True, default=None)
 
-    order_details = relationship("OrderDetail", back_populates="Order")
-    customers = relationship("Customer", back_populates="Order")
+    order_details = relationship("OrderDetail", back_populates="order")
+    customer = relationship("Customer", back_populates="order")
 
 
 class Payment(Base):
@@ -48,7 +49,7 @@ class Payment(Base):
     transaction_status = Column(String(100))
     payment_type = Column(String(100))
 
-    payments = relationship("Payment", back_populates="Payment")
+    payments = relationship("Payment", back_populates="payment")
 
 
 class Pizza(Base):
@@ -61,7 +62,7 @@ class Pizza(Base):
     calories = Column(Integer)
     food_category = Column(String(100))
 
-    resources = relationship("Resources", back_populates="Pizzas")
+    resources = relationship("resources", back_populates="pizzas")
 
 
 class Promotion(Base):
@@ -72,7 +73,7 @@ class Promotion(Base):
     promotion_code = Column(String(100))
     expiration = Column(Date)
 
-    # orders = relationship("Order", back_populates="customer")
+    orders = relationship("Order", back_populates="customer")
 
 
 class ResourceManagement(Base):
@@ -90,4 +91,4 @@ class Review(Base):
     review = Column(String(100))
     score = Column(Integer())
 
-    # reviews = relationship("Review", back_populates="review")
+    reviews = relationship("Review", back_populates="review")

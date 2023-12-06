@@ -1,12 +1,13 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
-from ..models import models as model
+from ..models import orders as model
 from sqlalchemy.exc import SQLAlchemyError
 
 
 def create(db: Session, request):
     new_item = model.Order(
         customer_name=request.customer_name,
+        order_date=request.order_date,
         description=request.description,
         promo_code=request.promo_code if hasattr(request, 'promo_code') else None
     )

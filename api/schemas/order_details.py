@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
-from .pizzas import Pizza
+from .sandwiches import Dish
 
 
 class OrderDetailBase(BaseModel):
@@ -10,7 +10,7 @@ class OrderDetailBase(BaseModel):
 
 class OrderDetailCreate(OrderDetailBase):
     order_id: int
-    pizza_id: int
+    dish_id: int
 
 class OrderDetailUpdate(BaseModel):
     order_id: Optional[int] = None
@@ -21,7 +21,7 @@ class OrderDetailUpdate(BaseModel):
 class OrderDetail(OrderDetailBase):
     id: int
     order_id: int
-    pizza: Pizza = None
+    dish: Dish = None
 
     class ConfigDict:
         from_attributes = True

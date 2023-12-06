@@ -1,9 +1,11 @@
 from . import (orders, order_details, customers, payments, reviews, resourceManagement,
-               promotions, pizzas)
+               promotions, pizzas, chefs, staffs)
 
 
 def load_routes(app):
     app.include_router(customers.router)
+    app.include_router(chefs.router)
+    app.include_router(staffs.router)
     app.include_router(reviews.router)
     app.include_router(payments.router)
     app.include_router(orders.router)

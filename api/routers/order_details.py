@@ -3,8 +3,6 @@ from sqlalchemy.orm import Session
 from ..controllers import order_details as controller
 from ..schemas import order_details as schema
 from ..dependencies.database import engine, get_db
-from typing import List
-
 
 router = APIRouter(
     tags=['Order Details'],
@@ -17,7 +15,7 @@ def create(request: schema.OrderDetailCreate, db: Session = Depends(get_db)):
     return controller.create(db=db, request=request)
 
 
-@router.get("/", response_model=List[schema.OrderDetail])
+@router.get("/", response_model=list[schema.OrderDetail])
 def read_all(db: Session = Depends(get_db)):
     return controller.read_all(db)
 
